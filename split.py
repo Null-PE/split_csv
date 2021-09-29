@@ -10,7 +10,7 @@ def split(filehandler, encoding="CP932", output_path='output', keep_headers=True
                 subfile.close()
             name = line.split('】',1)[1]
             subfile = open(f"{output_path}/{name}.csv", "w", encoding="utf8")
-        else:
+        elif subfile:
             subfile.write(line)
     if subfile:
         subfile.close()
