@@ -12,8 +12,8 @@ def split(filehandler, encoding="CP932", output_path='output', keep_headers=True
             subfile = open(f"{output_path}/{name}.csv", "w", encoding="utf8")
         else:
             subfile.write(line)
-    
-    subfile.close()
+    if subfile:
+        subfile.close()
 
 
 if __name__ == "__main__":
