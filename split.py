@@ -16,11 +16,12 @@ def split(filehandler, encoding="CP932", output_path='output', keep_headers=True
             if subfile:
                 subfile.close()
             name = line.strip().split('】', 1)[1]
-            if name is None or 'dummy' in name:
-                name = f"{count}_{line.strip()}"
-                count = count + 1
-            print(f"write into subfile {subpath}/{name}.csv")
-            subfile = open(f"{subpath}/{name}.csv", "w", encoding="utf8")
+            if name == '' or 'dummy' in name:
+                name = line.strip()
+            full_name = f"{subpath}/{count}_{name}.csv"
+            print(f"write into subfile {full_name}")
+            subfile = open(full_name, "w", encoding="utf8")
+            count = count + 1
         elif subfile:
             subfile.write(line)
     if subfile:
